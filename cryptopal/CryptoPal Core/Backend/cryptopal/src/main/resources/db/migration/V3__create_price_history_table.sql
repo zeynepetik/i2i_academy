@@ -1,3 +1,4 @@
+drop table if exists price_history;
 create table price_history(
     price_id UUID primary key default gen_random_uuid(),
     symbol VARCHAR(50) not null,
