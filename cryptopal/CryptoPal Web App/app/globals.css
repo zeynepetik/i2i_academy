@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/*
+  CryptoPal design tokens — a brightened take on the reference terminal:
+  lighter navy surfaces (not near-black), a more saturated signal-green
+  accent, and a warmer negative red so red/green stay legible at a glance.
+*/
+:root {
+  --color-bg: #0e1729;
+  --color-panel: #16223b;
+  --color-panel-raised: #1c2a47;
+  --color-border: #2b3a5c;
+  --color-border-subtle: #22304d;
+
+  --color-text-primary: #f4f7fc;
+  --color-text-secondary: #a3b0cc;
+  --color-text-muted: #6b7897;
+
+  --color-accent: #1fe6a3;
+  --color-accent-strong: #0fd193;
+  --color-accent-soft: rgba(31, 230, 163, 0.12);
+
+  --color-negative: #ff5d7a;
+  --color-negative-soft: rgba(255, 93, 122, 0.12);
+
+  --color-purple: #a78bfa;
+  --color-amber: #fbbf6e;
+
+  --font-sans: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo,
+    Consolas, monospace;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-panel: var(--color-panel);
+  --color-panel-raised: var(--color-panel-raised);
+  --color-border: var(--color-border);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-negative: var(--color-negative);
+  --color-purple: var(--color-purple);
+  --color-amber: var(--color-amber);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-text-primary);
+}
+
+/* subtle scrollbar so long tables/chat logs don't feel default-browser */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
