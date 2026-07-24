@@ -6,6 +6,7 @@ import { ChatMessage } from "@/lib/types";
 import { AI_SUGGESTIONS, INITIAL_AI_MESSAGE } from "@/lib/mockData";
 import { aiQuery } from "@/lib/api";
 import ChatBubble from "./ChatBubble";
+import { generateId } from "@/lib/uuid";
 
 interface AIAssistantProps {
   userId: string;
@@ -26,7 +27,7 @@ export default function AIAssistant({ userId }: AIAssistantProps) {
     if (!trimmed || sending) return;
 
     const userMessage: ChatMessage = {
-      id: crypto.randomUUID(),
+      id: generateId(),
       role: "user",
       content: trimmed,
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
@@ -40,7 +41,7 @@ export default function AIAssistant({ userId }: AIAssistantProps) {
       setMessages((prev) => [
         ...prev,
         {
-          id: crypto.randomUUID(),
+          id: generateId(),
           role: "assistant",
           content: insight,
           timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
@@ -50,7 +51,7 @@ export default function AIAssistant({ userId }: AIAssistantProps) {
       setMessages((prev) => [
         ...prev,
         {
-          id: crypto.randomUUID(),
+          id: generateId(),
           role: "assistant",
           content: "Sorry, I couldn't reach the AI service right now. Please try again shortly.",
           timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
